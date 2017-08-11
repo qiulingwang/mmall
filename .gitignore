@@ -6,4 +6,5 @@ target/
 .classpath
 .DS_Storegit
 overlays/
+.idea
 
