@@ -31,6 +31,12 @@ public class DateTimeUtil {
             return StringUtils.EMPTY;
         }
         DateTime dateTime = new DateTime(date);
+
+        System.out.println("dateTime.getSecondOfDay()=="+dateTime.getSecondOfDay());
+        System.out.println("dateTime.getDayOfMonth()=="+dateTime.getDayOfMonth());
+        System.out.println("dateTime.getDayOfWeek()=="+dateTime.getDayOfWeek());
+        System.out.println("dateTime.getDayOfYear()=="+dateTime.getDayOfYear());
+
         return dateTime.toString(formatStr);
     }
 
