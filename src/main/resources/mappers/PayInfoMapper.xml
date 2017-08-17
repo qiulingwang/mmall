@@ -33,7 +33,7 @@
       create_time, update_time)
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{orderNo,jdbcType=BIGINT}, 
       #{payPlatform,jdbcType=INTEGER}, #{platformNumber,jdbcType=VARCHAR}, #{platformStatus,jdbcType=VARCHAR}, 
-       now(),  now())
+      now(), now())
   </insert>
   <insert id="insertSelective" parameterType="com.mmall.pojo.PayInfo" >
     insert into mmall_pay_info
@@ -82,6 +82,9 @@
       <if test="platformStatus != null" >
         #{platformStatus,jdbcType=VARCHAR},
       </if>
+      <if test="createTime != null" >
+        now(),
+      </if>
       <if test="updateTime != null" >
         now(),
       </if>
@@ -105,8 +108,11 @@
       <if test="platformStatus != null" >
         platform_status = #{platformStatus,jdbcType=VARCHAR},
       </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="updateTime != null" >
-        update_time =  now(),
+        update_time = now(),
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -118,7 +124,8 @@
       pay_platform = #{payPlatform,jdbcType=INTEGER},
       platform_number = #{platformNumber,jdbcType=VARCHAR},
       platform_status = #{platformStatus,jdbcType=VARCHAR},
-      update_time =  now()
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

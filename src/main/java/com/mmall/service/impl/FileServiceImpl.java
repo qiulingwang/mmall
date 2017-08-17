@@ -26,7 +26,6 @@ public class FileServiceImpl implements IFileService {
         //扩展名
         //abc.jpg
         String fileExtensionName = fileName.substring(fileName.lastIndexOf(".")+1);
-        //重置每个上传文件的名字，防止用户上传多个重复名字的图片，发生图片内容覆盖
         String uploadFileName = UUID.randomUUID().toString()+"."+fileExtensionName;
         logger.info("开始上传文件,上传文件的文件名:{},上传的路径:{},新文件名:{}",fileName,path,uploadFileName);
 
@@ -46,7 +45,6 @@ public class FileServiceImpl implements IFileService {
             FTPUtil.uploadFile(Lists.newArrayList(targetFile));
             //已经上传到ftp服务器上
 
-            //上传完之后删除upload下的文件
             targetFile.delete();
         } catch (IOException e) {
             logger.error("上传文件异常",e);

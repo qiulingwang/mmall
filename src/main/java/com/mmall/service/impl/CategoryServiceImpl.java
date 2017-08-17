@@ -94,7 +94,7 @@ public class CategoryServiceImpl implements ICategoryService {
         if(category != null){
             categorySet.add(category);
         }
-        //查找子节点,递归算法一定要有一个退出的条件,mybatis 查出来的list 不会为null，如果没有 就不会继续执行下面的循环
+        //查找子节点,递归算法一定要有一个退出的条件
         List<Category> categoryList = categoryMapper.selectCategoryChildrenByParentId(categoryId);
         for(Category categoryItem : categoryList){
             findChildCategory(categorySet,categoryItem.getId());
